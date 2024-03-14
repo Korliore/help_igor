@@ -3,7 +3,6 @@ from src.services.utils import clear_data
 from src.web.api.contacts.schema import ContactCreate, ContactInfo
 from src.db.repo import ContactsRepository
 
-
 router = APIRouter()
 
 
@@ -23,7 +22,7 @@ async def create_new_contact(
     return all_data
 
 
-@router.get("/{id}")
+@router.get("/{id}", response_model=ContactInfo)
 async def get_contact(
     request: Request,
     id: int,
@@ -40,10 +39,12 @@ async def get_contact(
     return contact
 
 
-@router.get("/")
+@router.get(
+    "/",
+)
 async def get_contacts(
     request: Request,
-):
+) -> list[ContactInfo]:
     """
     Get all contacts.
 

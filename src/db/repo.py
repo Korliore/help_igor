@@ -38,7 +38,7 @@ class SQLAlchemyRepository(AbstractRepository):
         return result
 
     async def find_all(
-        self, filter_by: dict, order_by=None, offset=0, limit=50, fields=None
+        self, filter_by: dict, order_by=None, offset=0, limit=None, fields=None
     ):
         async for session in get_db_session(self.request):
             query = select(self.model).filter_by(**filter_by)
