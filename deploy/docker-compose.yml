@@ -12,11 +12,11 @@ services:
     - .env
     environment:
       SRC_HOST: 0.0.0.0
-      SRC_DB_HOST: src-db
+      SRC_DB_HOST: 192.168.3.7
       SRC_DB_PORT: 5432
-      SRC_DB_USER: src
-      SRC_DB_PASS: src
-      SRC_DB_BASE: src
+      SRC_DB_USER: postgres
+      SRC_DB_PASS: postgres
+      SRC_DB_BASE: help_igor_app
 
 
 volumes:

@@ -41,8 +41,8 @@ class Settings(BaseSettings):
     # Variables for the database
     db_host: str = "localhost"
     db_port: int = 5432
-    db_user: str = "postgres"
-    db_pass: str = "postgres"
+    db_user: str = "localhost"
+    db_pass: str = "localhost"
     db_base: str = "help_igor_app"
     db_echo: bool = False
 
