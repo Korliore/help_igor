@@ -1,7 +1,6 @@
 from fastapi.routing import APIRouter
 
-from src.web.api import echo, monitoring
+from src.web.api import contacts
 
 api_router = APIRouter()
-api_router.include_router(monitoring.router)
-api_router.include_router(echo.router, prefix="/echo", tags=["echo"])
+api_router.include_router(contacts.router, prefix="/contacts", tags=["contacts"])

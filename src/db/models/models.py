@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Date, Integer, String, Text
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship
 from src.db.base import Base
+
 
 class Contact(Base):
     __tablename__ = "contacts"
