@@ -1,4 +1,4 @@
-from sqlalchemy import update, select, func, text
+from sqlalchemy import update, select, delete, text
 from src.db.abstract_repository import AbstractRepository
 from src.db.dependencies import get_db_session
 from sqlalchemy.dialects.postgresql import insert
@@ -90,6 +90,15 @@ class SQLAlchemyRepository(AbstractRepository):
         async for session in get_db_session(self.request):
             sql = text(query)
             await session.execute(sql)
+
+    async def delete_one(self, id_: int):
+        async for session in get_db_session(self.request):
+            stmt = delete(self.model).where(self.model.id == id_)
+            result = await session.execute(stmt)
+            if result.rowcount > 0:
+                return {"message": "Deleted successfully."}
+            else:
+                return {"message": "Not found."}
 
 
 class ContactsRepository(SQLAlchemyRepository):
