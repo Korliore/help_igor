@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     db_host: str = "127.0.0.1"
     db_port: int = 5432
     db_user: str = "postgres"
-    db_pass: str = "postgres"
+    db_pass: str = "stariy_skuf"
     db_base: str = "help_igor_app"
     db_echo: bool = False
 
