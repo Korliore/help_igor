@@ -98,7 +98,7 @@ class SQLAlchemyRepository(AbstractRepository):
             if result.rowcount > 0:
                 return {"message": "Deleted successfully."}
             else:
-                return {"message": "Not found."}
+                return None
 
 
 class ContactsRepository(SQLAlchemyRepository):

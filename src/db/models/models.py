@@ -1,6 +1,7 @@
-from sqlalchemy import Column, Date, Integer, String, Text
+from sqlalchemy import Column, Integer, String, Text
 from src.db.base import Base
 from datetime import datetime
+from sqlalchemy import DateTime
 
 
 class Contact(Base):
@@ -9,8 +10,8 @@ class Contact(Base):
 
     id = Column(Integer, primary_key=True, comment="Уникальный идентификатор")
     name = Column(String, nullable=False, comment="Имя контакта")
-    discription = Column(Text, comment="Описание контакат")
-    created_at = Column(Date, comment="Дата создания", default=datetime.now)
+    discription = Column(Text, comment="Описание контаката")
+    created_at = Column(DateTime, comment="Дата создания", default=datetime.now)
     updated_at = Column(
-        Date, comment="Дата обновления", default=datetime.now, onupdate=datetime.now
+        DateTime, comment="Дата обновления", default=datetime.now, onupdate=datetime.now
     )

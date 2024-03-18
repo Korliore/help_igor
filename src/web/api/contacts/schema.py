@@ -8,6 +8,11 @@ class ContactCreate(BaseModel):
     discription: Optional[str] = ""
 
 
+class ContactUpdate(BaseModel):
+    name: Optional[str] = None
+    discription: Optional[str] = None
+
+
 class ContactInfo(BaseModel):
     id: int
     name: str

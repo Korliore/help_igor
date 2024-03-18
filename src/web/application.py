@@ -16,7 +16,7 @@ def get_app() -> FastAPI:
     :return: application.
     """
     app = FastAPI(
-        title="src",
+        title="Help Igor",
         version=metadata.version("src"),
         docs_url="/api/docs",
         redoc_url="/api/redoc",

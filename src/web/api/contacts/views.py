@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Request, HTTPException
 from src.services.utils import clear_data
-from src.web.api.contacts.schema import ContactCreate, ContactInfo
+from src.web.api.contacts.schema import ContactCreate, ContactInfo, ContactUpdate
 from src.db.repo import ContactsRepository
 
 router = APIRouter()
@@ -66,6 +66,27 @@ async def delete_contact(
     :returns: deleted contact.
     """
     contact = await ContactsRepository(request).delete_one(id_=id)
+    if not contact:
+        raise HTTPException(status_code=404, detail="Contact not found")
+    return contact
+
+
+@router.put("/{id}")
+async def update_contact(
+    request: Request,
+    id: int,
+    contact_data: ContactUpdate,
+) -> ContactInfo:
+    """
+    Update contact by id.
+
+    :param id: contact id.
+    :param contact_data: contact data to update.
+    :returns: updated contact.
+    """
+    contact = await ContactsRepository(request).edit_one(
+        id_=id, data=contact_data.dict()
+    )
     if not contact:
         raise HTTPException(status_code=404, detail="Contact not found")
     return contact
