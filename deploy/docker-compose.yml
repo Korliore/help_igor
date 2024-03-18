@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: ./deploy/Dockerfile
+      target: prod
+    image: src:${SRC_VERSION:-latest}
+    restart: always
+    env_file:
+    - .env
+    environment:
+      SRC_HOST: 0.0.0.0
+      SRC_DB_HOST: 192.168.3.7
+      SRC_DB_PORT: 5432
+      SRC_DB_USER: postgres
+      SRC_DB_PASS: postgres
+      SRC_DB_BASE: help_igor_app
+
+
+volumes:
+  src-db-data:
+    name: src-db-data
